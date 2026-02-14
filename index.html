@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FAGYMOFFC Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: #00ffcc;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.container {
+    padding: 40px;
+    max-width: 900px;
+}
+
+.glow {
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+section {
+    margin-top: 30px;
+}
+
+h3 {
+    border-bottom: 1px solid #00ffcc;
+    padding-bottom: 5px;
+}
+
+a {
+    color: #00ffcc;
+    text-decoration: none;
+}
+</style>
+
+</head>
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <h1 class="glow">> SYSTEM PROFILE : FAGYMOFFC</h1>
+    <h2 id="typing"></h2>
+
+    <section>
+        <h3>Identity</h3>
+        <p>Name : Fahmi Ilham Gymnastiar</p>
+        <p>Role : Fullstack Web Developer</p>
+        <p>Location : Indonesia</p>
+        <p>Status : Active & Available</p>
+    </section>
+
+    <section>
+        <h3>About</h3>
+        <p>
+        Seorang Web Developer yang berfokus pada pembuatan sistem modern, cepat, dan efisien.
+        Menguasai pengembangan frontend dan backend dengan pendekatan praktis dan scalable.
+        Spesialis dalam pembuatan website, sistem login, API, dan integrasi AI.
+        </p>
+    </section>
+
+    <section>
+        <h3>Tech Stack</h3>
+        <p>Frontend : HTML, CSS, JavaScript</p>
+        <p>Backend : Node.js, Python</p>
+        <p>Database : MongoDB, MySQL</p>
+        <p>Tools : Git, Vercel, VS Code</p>
+    </section>
+
+    <section>
+        <h3>Experience</h3>
+        <p>- Build AI Web Assistant</p>
+        <p>- OTP Authentication System</p>
+        <p>- Portfolio & Landing Pages</p>
+        <p>- REST API Development</p>
+    </section>
+
+    <section>
+        <h3>Developer Stats</h3>
+        <p>Projects Completed : 10+</p>
+        <p>Technologies Used : 6+</p>
+        <p>Years Learning : Ongoing</p>
+        <p>Focus : Web Development & Automation</p>
+    </section>
+
+    <section>
+        <h3>Contact</h3>
+        <p>Email : your@email.com</p>
+        <p>GitHub : <a href="#">github.com/username</a></p>
+        <p>Portfolio : <a href="#">your-domain.vercel.app</a></p>
+    </section>
+
+    <section>
+        <h3>System Status</h3>
+        <p>> Connection : Secure</p>
+        <p>> Mode : Developer</p>
+        <p>> Access Level : Owner</p>
+        <p>> AI Assistant : FAGYMOFFC Online</p>
+    </section>
+
+</div>
+
+<script>
+// Typing Effect
+const text = "Initializing Developer Environment... Access Granted, Owner.";
+let index = 0;
+
+function type() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 35);
+    }
+}
+type();
+
+// Matrix Background
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+for (let x = 0; x < columns; x++) drops[x] = 1;
+
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#00ffcc";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const char = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975)
+            drops[i] = 0;
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+</html>
